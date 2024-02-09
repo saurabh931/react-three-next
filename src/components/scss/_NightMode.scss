@@ -1,0 +1,58 @@
+.dark-theme {
+    --background-color: black;
+    --color: white;
+}
+
+.light-theme {
+    --background-color: white;
+    --color: rgb(18, 18, 18);
+}
+
+html,
+body,
+input,
+select,
+#dropdown,
+.modal-content,
+.pa-1.offcanvas.offcanvas-start.show,
+svg,
+.dropdown-menu.show {
+    background-color: var(--background-color) !important;
+    color: var(--color) !important;
+    fill: var(--color) !important;
+    border-color: var(--color) !important;
+}
+
+.b-1 {
+    border: 2px solid rgb(206, 206, 206) !important
+}
+
+// button {
+//     color: var(--color) !important;
+// }
+
+
+
+.gray_clr {
+    color: rgb(159, 159, 159) !important;
+}
+
+.bg_box {
+    background-color: #222325 !important;
+}
+
+.c-l-w {
+    color: rgb(221, 221, 221) !important;
+}
+
+.bg_g {
+    background-color: rgb(137, 235, 91) !important;
+}
+
+.pink_clr {
+    color: rgb(235, 91, 229) !important;
+}
+
+.b_pink {
+    border: 1px solid rgb(235, 91, 229) !important;
+}

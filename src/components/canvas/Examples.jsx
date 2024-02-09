@@ -43,9 +43,9 @@ export const Logo = ({ route = '/blob', ...props }) => {
       {/* @ts-ignore */}
       <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} />
       {/* @ts-ignore */}
-      <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} rotation={[0, 0, 1]} />
+      <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15}  />
       {/* @ts-ignore */}
-      <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15} rotation={[0, 0, -1]} />
+      <Line worldUnits points={points} color='#1fb2f5' lineWidth={0.15}  />
       <mesh onClick={() => router.push(route)} onPointerOver={() => hover(true)} onPointerOut={() => hover(false)}>
         <sphereGeometry args={[0.55, 64, 64]} />
         <meshPhysicalMaterial roughness={0.5} color={hovered ? 'hotpink' : '#1fb2f5'} />
@@ -55,14 +55,14 @@ export const Logo = ({ route = '/blob', ...props }) => {
 }
 
 export function Duck(props) {
-  const { scene } = useGLTF('/duck.glb')
+  const { scene } = useGLTF('/ship.glb')
 
   useFrame((state, delta) => (scene.rotation.y += delta))
 
   return <primitive object={scene} {...props} />
 }
 export function Dog(props) {
-  const { scene } = useGLTF('/dog.glb')
+  const { scene } = useGLTF('/dog.gltf')
 
   return <primitive object={scene} {...props} />
 }
