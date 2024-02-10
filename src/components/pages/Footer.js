@@ -7,9 +7,9 @@ import { TbBrandLinktree } from "react-icons/tb";
 
 function Footer() {
   return (
-    <div className="b-c-b c-w">
+    <div className=" c-w">
       <div className="container-kws ">
-        <div className="d-f a-i-c g-2 j-c-s-b p-t-3 m-t-7 flex-wrap">
+        <div className="d-f a-i-c g-2 j-c-s-b p-t-3  flex-wrap">
           <div className="">
             <ul className="l-s-t-n d-f a-i-c g-2 ">
               <li className=" f-w-600">
@@ -18,33 +18,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className=" c-p ">
-            <ul className="l-s-t-n d-f a-i-c g-2 ">
-              <Link href="/">
-                {" "}
-                <li className=" c-p ">Home</li>
-              </Link>
-              <Link href="/blog">
-                {" "}
-                <li className=" c-p ">Blog</li>
-              </Link>
-              {/* <li className=" c-p ">
-              <span className="" onClick={() => toggleTheme()}>
-                {theme === "dark-theme" ? "Light mode" : "Dark mode"}
-              </span>
-            </li> */}
-              {/* <li className=" c-pq ">
-              {" "}
-              <Button
-                variant="primary"
-                onClick={handleShow2}
-                className=" b-c-t pa-0_5 c-i b-c-i"
-              >
-                Connect Wallet
-              </Button>
-            </li> */}
-            </ul>
-          </div>
+      
         </div>
         <div className="d-f a-i-c j-c-s-b p-t-4 p-b-2 g-2 flex-wrap">
           <div className="">

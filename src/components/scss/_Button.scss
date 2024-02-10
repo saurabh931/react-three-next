@@ -14,7 +14,7 @@ button.menu-button-mobile.m-l-1.btn.btn-primary:hover {
     margin-top: 2rem !important;
 }
 
-.h-90vh{
+.h-90vh {
     height: 80vh !important;
 }
 
@@ -302,4 +302,17 @@ code {
 
 .c-b {
     color: blue !important;
+}
+
+body {
+    margin: 0 !important;
+}
+
+.bg_border_img {
+    background-image: url(../../../public/download.svg) !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    width: 200px !important;
+    display: block !important;
+    margin: auto !important;
 }

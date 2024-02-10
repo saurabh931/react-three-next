@@ -1,0 +1,40 @@
+/* #app {
+    height: 100% !important;
+} */
+
+/* html,
+body {
+    position: relative !important;
+    height: 100% !important;
+} */
+
+/*  */
+
+.swiper {
+    width: 100% !important;
+    height: 100% !important;
+}
+.swiper-pagination-bullet-active {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(201, 201, 201); /* Change the color to your desired color for the active bullet */
+    margin: 0 5px; /* Adjust the spacing between bullets if needed */
+  }
+  
+  /* Styles for unhighlighted (inactive) pagination bullets */
+  .swiper-pagination-bullet {
+    width: 20px;
+    height: 10px;
+    background-color: red; /* Change the color to your desired color for inactive bullets */
+    margin: 0 5px;
+    border-radius: 10px !important; /* Adjust the spacing between bullets if needed */
+  }
+
+/* */
+
+/* .swiper-slide img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+} */

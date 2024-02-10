@@ -1,13 +1,51 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbars from './Navbars'
-// import Swiper_slider from "./Swiper_slider";
+import Swiper_slider from './Swiper_slider'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import Footer from './Footer'
 import '../scss/Main.scss'
+import { motion, useMotionValue, useTransform } from 'framer-motion'
+
 import Threed from './Threed'
 
+const smoothScrollTo = (target) => {
+  const element = document.querySelector(target)
+  if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    })
+  }
+}
+
 function Homes() {
+  useEffect(() => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault()
+        const target = this.getAttribute('href')
+        smoothScrollTo(target)
+      })
+    })
+  }, [])
+
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const rotateValue = scrollY * 0.5 // Adjust rotation speed as needed
+
   return (
     <div className='b-c-b c-l-w'>
       <Navbars />
@@ -16,14 +54,16 @@ function Homes() {
       </div>
       <a href='#explore'>
         {' '}
-        <div className='t-a-c gray_clr '>Click to explore</div>
+        <div className='t-a-c gray_clr p-t-1 p-b-5 '>Click to explore</div>
       </a>
       <div className='container-kws' id='explore'>
-        <div className='f-s-3 p-x-2 l-h-1 f-w-800 t-a-c m-b-3 p-t-3  d-b m-a'>
+        <div className='f-s-3 p-x-2 l-h-1 f-w-800 t-a-c m-b-3   d-b m-a'>
           Onix makes blockchain development accessible for everyone.
         </div>
       </div>
-      <div className='container-kws'>{/* <Swiper_slider /> */}</div>
+      <div className='container-kws'>
+        <Swiper_slider />
+      </div>
       <div className='container-kws'>
         <div className='section'>
           <div className='d-g g-t-c-2 g-2 '>
@@ -53,9 +93,9 @@ function Homes() {
         </div>
         <div className='section'>
           <div className='d-g g-t-c-2 g-2 '>
-            <div className=''>
-              <img src='/circle.webp' className='' alt='' />
-            </div>
+            <motion.div style={{ transform: `rotate(${rotateValue}deg)` }}>
+              <img src='/circle.jpg' className='' alt='' />
+            </motion.div>
             <div className=''>
               <div className='f-s-2 l-h-1 f-w-600 m-b-2'>Top blockchains build on Onix.</div>
               <div className='m-b-2 k-f-f gray_clr'>
@@ -103,14 +143,6 @@ function Homes() {
             <div className='f-s-2 l-h-1 f-w-600 t-a-c m-b-1'>Scaling solutions, amplified.</div>
             <div className='gray_clr m-b-3 t-a-c k-f-f '>Onix's complete suite of blockchain-scaling solutions.</div>
             <div className='d-f a-i-c j-c-c flex-wrap g-2'>
-              <div className='bg_box b-r-10 pa-1 w-17'>
-                <img src='/icon.png' alt='' className='m-b-0_5 w-2_5' />
-                <div className='f-s-2 l-h-1 f-w-600 m-b-1'>Onix Lancer</div>
-                <div className='m-b-1 k-f-f'>
-                  EVM-compatible block sidechain, secured by a permissionless set of PoS validators.
-                </div>
-                <div className='t-t-u k-f-f f-s-0_8 b-r-5 c-b d-i-b bg_g'>online</div>
-              </div>
               <div className='bg_box b-r-10 pa-1 w-17'>
                 <img src='/icon.png' alt='' className='m-b-0_5 w-2_5' />
                 <div className='f-s-2 l-h-1 f-w-600 m-b-1'>Onix Lancer</div>
@@ -209,78 +241,77 @@ function Homes() {
             </div>
           </div>
         </div>
-        <div className='section'>
-          <div className='container-kws'>
-            <div className='d-g g-t-c-3 g-2'>
-              <div className=''>
-                <div className='m-b-1 f-s-1_5  f-w-600'>
-                  “It’s not just that is fast, the scalability and ease of use is simply unparalleled, truly
-                  mindblowing”
-                </div>
-                <div className='d-f a-i-c g-1'>
-                  <img
-                    src='https://framerusercontent.com/images/bfV2PAVOQd6phinkvBjGdmv7NCM.jpg?scale-down-to=512'
-                    className='b-r-50 w-3 h-3'
-                    alt=''
-                  />
-                  <div className=''>
-                    <div className=''>Markus Freeman</div>
-                    <div className='gray_clr k-f-f'>DevOps - Azious</div>
-                  </div>
+      </div>
+      <div className='section'>
+        <div className='container-kws'>
+          <div className='d-g g-t-c-3 g-2'>
+            <div className=''>
+              <div className='m-b-1 f-s-1_5  f-w-600'>
+                “It’s not just that is fast, the scalability and ease of use is simply unparalleled, truly mindblowing”
+              </div>
+              <div className='d-f a-i-c g-1'>
+                <img
+                  src='https://framerusercontent.com/images/bfV2PAVOQd6phinkvBjGdmv7NCM.jpg?scale-down-to=512'
+                  className='b-r-50 w-3 h-3'
+                  alt=''
+                />
+                <div className=''>
+                  <div className=''>Markus Freeman</div>
+                  <div className='gray_clr k-f-f'>DevOps - Azious</div>
                 </div>
               </div>
-              <div className=''>
-                <div className='m-b-1 f-s-1_5  f-w-600'>
-                  “It’s not just that is fast, the scalability and ease of use is simply unparalleled, truly
-                  mindblowing”
-                </div>
-                <div className='d-f a-i-c g-1'>
-                  <img
-                    src='https://framerusercontent.com/images/bfV2PAVOQd6phinkvBjGdmv7NCM.jpg?scale-down-to=512'
-                    className='b-r-50 w-3 h-3'
-                    alt=''
-                  />
-                  <div className=''>
-                    <div className=''>Markus Freeman</div>
-                    <div className='gray_clr k-f-f'>DevOps - Azious</div>
-                  </div>
+            </div>
+            <div className=''>
+              <div className='m-b-1 f-s-1_5  f-w-600'>
+                “It’s not just that is fast, the scalability and ease of use is simply unparalleled, truly mindblowing”
+              </div>
+              <div className='d-f a-i-c g-1'>
+                <img
+                  src='https://framerusercontent.com/images/bfV2PAVOQd6phinkvBjGdmv7NCM.jpg?scale-down-to=512'
+                  className='b-r-50 w-3 h-3'
+                  alt=''
+                />
+                <div className=''>
+                  <div className=''>Markus Freeman</div>
+                  <div className='gray_clr k-f-f'>DevOps - Azious</div>
                 </div>
               </div>
+            </div>
 
-              <div className=''>
-                <div className='m-b-1 f-s-1_5  f-w-600'>
-                  “It’s not just that is fast, the scalability and ease of use is simply unparalleled, truly
-                  mindblowing”
-                </div>
-                <div className='d-f a-i-c g-1'>
-                  <img
-                    src='https://framerusercontent.com/images/bfV2PAVOQd6phinkvBjGdmv7NCM.jpg?scale-down-to=512'
-                    className='b-r-50 w-3 h-3'
-                    alt=''
-                  />
-                  <div className=''>
-                    <div className=''>Markus Freeman</div>
-                    <div className='gray_clr k-f-f'>DevOps - Azious</div>
-                  </div>
+            <div className=''>
+              <div className='m-b-1 f-s-1_5  f-w-600'>
+                “It’s not just that is fast, the scalability and ease of use is simply unparalleled, truly mindblowing”
+              </div>
+              <div className='d-f a-i-c g-1'>
+                <img
+                  src='https://framerusercontent.com/images/bfV2PAVOQd6phinkvBjGdmv7NCM.jpg?scale-down-to=512'
+                  className='b-r-50 w-3 h-3'
+                  alt=''
+                />
+                <div className=''>
+                  <div className=''>Markus Freeman</div>
+                  <div className='gray_clr k-f-f'>DevOps - Azious</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className='section'>
+      </div>
+      <div className='bg_box p-y-5'>
+        <div className=''>
           <div className='container-kws'>
             <div className='t-a-c f-s-3 f-w-600 m-b-2'>Want to get involved?</div>
             <div className='m-b-3 t-a-c k-f-f'>
               <span className='gray_clr k-f-f'>Or learn all about</span>
               <span className='pink_clr k-f-f'> how to build on Onix.</span>
             </div>
-            <div className='t-a-c'>
-              <button className='b_pink t-t-u c-l-w b-c-t b-r-5 p-x-1 p-y-0_5 '>Join the community</button>
+            <div className='bg_border_img t-a-c'>
+              <button className=' t-t-u c-l-w b-c-t b-r-5 p-x-1 p-y-0_5 '>Join the community</button>
             </div>
           </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </div>
   )
 }
